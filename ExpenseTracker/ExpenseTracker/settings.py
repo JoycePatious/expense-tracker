@@ -132,4 +132,5 @@ STATIC_URL = 'static/'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://expense-tracker-theta-dun-63.vercel.app"
 ]

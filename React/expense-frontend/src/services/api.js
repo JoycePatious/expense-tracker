@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000",
+  baseURL: "https://expense-tracker-backend-lezb.onrender.com",
 });
 
 // Add access token to every request
