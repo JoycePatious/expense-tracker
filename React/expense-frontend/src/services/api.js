@@ -44,7 +44,7 @@ api.interceptors.response.use(
 
       try {
         const response = await axios.post(
-          "https://expense-tracker-backend-lezb.onrender.com/token/refresh/"
+          "https://expense-tracker-backend-lezb.onrender.com/token/refresh/",
           {
             refresh: refreshToken,
           }
