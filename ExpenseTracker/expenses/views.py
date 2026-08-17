@@ -1,11 +1,12 @@
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 from django.db.models import Sum
 from datetime import date
 
 from .models import Expense
-from .serializers import ExpenseSerializer
+from .serializers import ExpenseSerializer, RegisterSerializer
 
 
 class ExpenseListCreateView(generics.ListCreateAPIView):
@@ -25,6 +26,7 @@ class ExpenseDeleteView(generics.DestroyAPIView):
 
     def get_queryset(self):
         return Expense.objects.filter(owner=self.request.user)
+
 
 class ExpenseUpdateView(generics.UpdateAPIView):
     serializer_class = ExpenseSerializer
@@ -47,3 +49,8 @@ class MonthlyTotalView(APIView):
         return Response({
             "total": total["amount__sum"] or 0
         })
+
+
+class RegisterView(generics.CreateAPIView):
+    serializer_class = RegisterSerializer
+    permission_classes = [AllowAny]

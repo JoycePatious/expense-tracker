@@ -1,10 +1,8 @@
-
-import { useState, useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../services/api";
 
-function Login() {
-  const { login } = useContext(AuthContext);
+function SignUp() {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -14,12 +12,24 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const success = await login(username, password);
+    try {
+      await api.post("/register/", {
+        username,
+        password,
+      });
 
-    if (success) {
-      navigate("/");
-    } else {
-      setMessage("Invalid username or password");
+      setMessage("Account created successfully!");
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
+
+    } catch (error) {
+      if (error.response?.data?.username) {
+        setMessage(error.response.data.username[0]);
+      } else {
+        setMessage("Could not create account");
+      }
     }
   };
 
@@ -53,85 +63,59 @@ function Login() {
             color: "#1e3a8a",
             margin: "0 0 8px",
             fontSize: "28px",
-            fontWeight: "700",
           }}
         >
-          Welcome Back
+          Create Account
         </h1>
 
         <p
           style={{
             textAlign: "center",
             color: "#64748b",
-            margin: "0 0 30px",
-            fontSize: "14px",
+            marginBottom: "30px",
           }}
         >
-          Login to your Expense Tracker
+          Sign up for your Expense Tracker
         </p>
 
         <form onSubmit={handleSubmit}>
-          <label
-            style={{
-              display: "block",
-              color: "#1e3a8a",
-              fontSize: "14px",
-              fontWeight: "600",
-              marginBottom: "7px",
-            }}
-          >
-            Username
-          </label>
+          <label>Username</label>
 
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            required
             placeholder="Enter your username"
+            required
             style={{
               width: "100%",
               padding: "12px",
+              marginTop: "7px",
               marginBottom: "18px",
               boxSizing: "border-box",
               border: "1px solid #93c5fd",
               borderRadius: "9px",
               fontSize: "15px",
-              color: "#1e293b",
-              backgroundColor: "#f8fbff",
-              outline: "none",
             }}
           />
 
-          <label
-            style={{
-              display: "block",
-              color: "#1e3a8a",
-              fontSize: "14px",
-              fontWeight: "600",
-              marginBottom: "7px",
-            }}
-          >
-            Password
-          </label>
+          <label>Password</label>
 
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
             placeholder="Enter your password"
+            required
             style={{
               width: "100%",
               padding: "12px",
+              marginTop: "7px",
               marginBottom: "22px",
               boxSizing: "border-box",
               border: "1px solid #93c5fd",
               borderRadius: "9px",
               fontSize: "15px",
-              color: "#1e293b",
-              backgroundColor: "#f8fbff",
-              outline: "none",
             }}
           />
 
@@ -147,29 +131,22 @@ function Login() {
               fontSize: "16px",
               fontWeight: "600",
               cursor: "pointer",
-              boxShadow: "0 5px 12px rgba(30, 64, 175, 0.22)",
             }}
           >
-            Login
+            Sign Up
           </button>
         </form>
 
         {message && (
-          <div
+          <p
             style={{
-              marginTop: "18px",
-              padding: "10px",
-              backgroundColor: "#fee2e2",
-              border: "1px solid #fecaca",
-              borderRadius: "8px",
-              color: "#b91c1c",
               textAlign: "center",
-              fontSize: "14px",
-              fontWeight: "500",
+              marginTop: "15px",
+              color: "#1e3a8a",
             }}
           >
             {message}
-          </div>
+          </p>
         )}
 
         <p
@@ -180,16 +157,16 @@ function Login() {
             fontSize: "14px",
           }}
         >
-          Don't have an account?{" "}
+          Already have an account?{" "}
           <span
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/login")}
             style={{
               color: "#1e40af",
               fontWeight: "600",
               cursor: "pointer",
             }}
           >
-            Sign Up
+            Login
           </span>
         </p>
       </div>
@@ -197,5 +174,4 @@ function Login() {
   );
 }
 
-export default Login;
-
+export default SignUp;

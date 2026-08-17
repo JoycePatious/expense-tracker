@@ -12,6 +12,7 @@ import MonthlyTotal from "./components/MonthlyTotal";
 import TopCategory from "./components/TopCategory";
 
 import "./App.css";
+import SignUp from "./pages/SignUp";
 
 function Dashboard() {
   const { logout } = useContext(AuthContext);
@@ -115,6 +116,11 @@ function App() {
         <Route
           path="/login"
           element={<Login />}
+        />
+
+        <Route
+          path="/signup"
+          element={<SignUp />}
         />
 
         <Route
