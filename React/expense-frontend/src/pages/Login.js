@@ -26,7 +26,8 @@ function Login() {
     <div
       style={{
         minHeight: "100vh",
-        backgroundColor: "#f5f7fb",
+        background:
+          "linear-gradient(135deg, #dbeafe 0%, #eff6ff 50%, #bfdbfe 100%)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -36,18 +37,22 @@ function Login() {
       <div
         style={{
           width: "100%",
-          maxWidth: "400px",
+          maxWidth: "410px",
           backgroundColor: "#ffffff",
-          padding: "35px",
-          borderRadius: "15px",
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
+          padding: "38px",
+          borderRadius: "18px",
+          border: "1px solid #bfdbfe",
+          borderTop: "5px solid #1e40af",
+          boxShadow: "0 12px 35px rgba(30, 64, 175, 0.15)",
         }}
       >
         <h1
           style={{
             textAlign: "center",
-            color: "#1e293b",
-            marginBottom: "10px",
+            color: "#1e3a8a",
+            margin: "0 0 8px",
+            fontSize: "28px",
+            fontWeight: "700",
           }}
         >
           Welcome Back
@@ -57,46 +62,75 @@ function Login() {
           style={{
             textAlign: "center",
             color: "#64748b",
-            marginBottom: "30px",
+            margin: "0 0 30px",
+            fontSize: "14px",
           }}
         >
           Login to your Expense Tracker
         </p>
 
         <form onSubmit={handleSubmit}>
-          <label>Username</label>
+          <label
+            style={{
+              display: "block",
+              color: "#1e3a8a",
+              fontSize: "14px",
+              fontWeight: "600",
+              marginBottom: "7px",
+            }}
+          >
+            Username
+          </label>
 
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            placeholder="Enter your username"
             style={{
               width: "100%",
-              padding: "11px",
-              marginTop: "6px",
+              padding: "12px",
               marginBottom: "18px",
               boxSizing: "border-box",
-              border: "1px solid #cbd5e1",
-              borderRadius: "8px",
+              border: "1px solid #93c5fd",
+              borderRadius: "9px",
+              fontSize: "15px",
+              color: "#1e293b",
+              backgroundColor: "#f8fbff",
+              outline: "none",
             }}
           />
 
-          <label>Password</label>
+          <label
+            style={{
+              display: "block",
+              color: "#1e3a8a",
+              fontSize: "14px",
+              fontWeight: "600",
+              marginBottom: "7px",
+            }}
+          >
+            Password
+          </label>
 
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Enter your password"
             style={{
               width: "100%",
-              padding: "11px",
-              marginTop: "6px",
-              marginBottom: "20px",
+              padding: "12px",
+              marginBottom: "22px",
               boxSizing: "border-box",
-              border: "1px solid #cbd5e1",
-              borderRadius: "8px",
+              border: "1px solid #93c5fd",
+              borderRadius: "9px",
+              fontSize: "15px",
+              color: "#1e293b",
+              backgroundColor: "#f8fbff",
+              outline: "none",
             }}
           />
 
@@ -104,13 +138,15 @@ function Login() {
             type="submit"
             style={{
               width: "100%",
-              padding: "12px",
-              backgroundColor: "#2563eb",
-              color: "white",
+              padding: "13px",
+              backgroundColor: "#1e40af",
+              color: "#ffffff",
               border: "none",
-              borderRadius: "8px",
+              borderRadius: "9px",
               fontSize: "16px",
+              fontWeight: "600",
               cursor: "pointer",
+              boxShadow: "0 5px 12px rgba(30, 64, 175, 0.22)",
             }}
           >
             Login
@@ -118,15 +154,21 @@ function Login() {
         </form>
 
         {message && (
-          <p
+          <div
             style={{
-              color: "#dc2626",
+              marginTop: "18px",
+              padding: "10px",
+              backgroundColor: "#fee2e2",
+              border: "1px solid #fecaca",
+              borderRadius: "8px",
+              color: "#b91c1c",
               textAlign: "center",
-              marginTop: "15px",
+              fontSize: "14px",
+              fontWeight: "500",
             }}
           >
             {message}
-          </p>
+          </div>
         )}
       </div>
     </div>

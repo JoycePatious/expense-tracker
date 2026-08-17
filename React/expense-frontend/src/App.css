@@ -1,38 +1,303 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  background-color: #dbeafe;
+  color: #1e293b;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button,
+input,
+select {
+  font-family: inherit;
 }
 
-.App-header {
-  background-color: #282c34;
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard {
   min-height: 100vh;
+  padding: 40px 20px;
+  background-color: #dbeafe;
+}
+
+.dashboard-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.dashboard-header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.dashboard-header h1 {
+  margin: 0;
+  color: #1e3a8a;
+  font-size: 32px;
+  font-weight: 700;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.dashboard-header p {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.logout-button {
+  padding: 10px 18px;
+  background-color: #1d4ed8;
+  color: #ffffff !important;
+  border: 1px solid #1d4ed8;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #1e40af;
+  border-color: #1e40af;
+  transform: translateY(-1px);
+}
+
+.logout-button:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.summary-card {
+  background-color: #eff6ff;
+  border: 1px solid #60a5fa;
+  border-top: 5px solid #2563eb;
+  border-radius: 14px;
+  padding: 22px;
+  min-height: 115px;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
+}
+
+/* Summary headings */
+
+.summary-title {
+  display: block;
+  color: #475569;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* Transactions value */
+
+.summary-value {
+  display: block;
+  color: #1e293b !important;
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* Monthly total component */
+
+.summary-card > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.monthly-total {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.monthly-total-label {
+  margin: 0 0 10px;
+  color: #475569;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.monthly-total-amount {
+  margin: 0;
+  color: #1e293b !important;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.monthly-total-month {
+  margin: 0 0 6px;
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.form-panel,
+.list-panel {
+  min-width: 0;
+}
+
+/* Main panels */
+
+.form-panel > div,
+.list-panel > div {
+  background-color: #eff6ff !important;
+  border: 1px solid #60a5fa !important;
+  border-top: 5px solid #2563eb !important;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15) !important;
+}
+
+/* Section headings */
+
+.form-panel h2,
+.list-panel h2 {
+  color: #1e3a8a !important;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.20) !important;
+}
+
+.form-panel input,
+.form-panel select {
+  background-color: #ffffff !important;
+  border: 1px solid #60a5fa !important;
+  color: #1e293b;
+}
+
+.form-panel input::placeholder {
+  color: #94a3b8;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+  font-family: inherit;
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.25);
+  outline-offset: 2px;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  transition: 0.2s ease;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  .summary-grid {
+    grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    padding: 25px 15px;
+  }
+
+  .dashboard-header {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 25px;
+  }
+
+  .logout-button {
+    padding: 9px 14px;
+  }
+
+  .summary-card {
+    padding: 18px;
+  }
+
+  .dashboard-content {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 450px) {
+  .dashboard-header {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 23px;
+  }
+
+  .logout-button {
+    width: auto;
+    padding: 8px 13px;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+}
+
+.summary-value {
+  color: #1e3a8a !important;
+}
+
+.monthly-total-amount {
+  color: #1e3a8a !important;
 }

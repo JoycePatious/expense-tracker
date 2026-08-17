@@ -2,13 +2,14 @@ import { useState } from "react";
 import api from "../services/api";
 
 function ExpenseList({ expenses, fetchExpenses }) {
-    const formatDate = (date) => {
+  const formatDate = (date) => {
     return new Date(date).toLocaleDateString("en-IN", {
       day: "numeric",
       month: "long",
       year: "numeric",
     });
   };
+
   const [editingId, setEditingId] = useState(null);
   const [editData, setEditData] = useState({});
 
@@ -58,8 +59,8 @@ function ExpenseList({ expenses, fetchExpenses }) {
         color: "#92400e",
       },
       Transport: {
-        backgroundColor: "#dbeafe",
-        color: "#1e40af",
+        backgroundColor: "#bfdbfe",
+        color: "#1e3a8a",
       },
       Shopping: {
         backgroundColor: "#fce7f3",
@@ -88,14 +89,17 @@ function ExpenseList({ expenses, fetchExpenses }) {
         backgroundColor: "#ffffff",
         padding: "25px",
         borderRadius: "15px",
-        boxShadow: "0 4px 15px rgba(0, 0, 0, 0.08)",
+        border: "1px solid #bfdbfe",
+        borderTop: "4px solid #2563eb",
+        boxShadow: "0 4px 15px rgba(37, 99, 235, 0.10)",
       }}
     >
       <h2
         style={{
           marginTop: "0",
           marginBottom: "20px",
-          color: "#1e293b",
+          color: "#1e3a8a",
+          fontSize: "22px",
         }}
       >
         Recent Expenses
@@ -132,16 +136,23 @@ function ExpenseList({ expenses, fetchExpenses }) {
           <div
             key={expense.id}
             style={{
-              border: "1px solid #e2e8f0",
+              border: "1px solid #dbeafe",
               borderRadius: "12px",
               padding: "20px",
               marginBottom: "15px",
-              backgroundColor: "#f8fafc",
+              backgroundColor: "#f8fbff",
             }}
           >
             {editingId === expense.id ? (
               <div>
-                <label>Amount</label>
+                <label
+                  style={{
+                    fontSize: "15px",
+                    fontWeight: "600",
+                  }}
+                >
+                  Amount
+                </label>
 
                 <input
                   name="amount"
@@ -156,10 +167,18 @@ function ExpenseList({ expenses, fetchExpenses }) {
                     boxSizing: "border-box",
                     border: "1px solid #cbd5e1",
                     borderRadius: "7px",
+                    fontSize: "15px",
                   }}
                 />
 
-                <label>Category</label>
+                <label
+                  style={{
+                    fontSize: "15px",
+                    fontWeight: "600",
+                  }}
+                >
+                  Category
+                </label>
 
                 <select
                   name="category"
@@ -172,6 +191,7 @@ function ExpenseList({ expenses, fetchExpenses }) {
                     marginBottom: "12px",
                     border: "1px solid #cbd5e1",
                     borderRadius: "7px",
+                    fontSize: "15px",
                   }}
                 >
                   <option>Food</option>
@@ -182,7 +202,14 @@ function ExpenseList({ expenses, fetchExpenses }) {
                   <option>Other</option>
                 </select>
 
-                <label>Description</label>
+                <label
+                  style={{
+                    fontSize: "15px",
+                    fontWeight: "600",
+                  }}
+                >
+                  Description
+                </label>
 
                 <input
                   name="description"
@@ -196,10 +223,18 @@ function ExpenseList({ expenses, fetchExpenses }) {
                     boxSizing: "border-box",
                     border: "1px solid #cbd5e1",
                     borderRadius: "7px",
+                    fontSize: "15px",
                   }}
                 />
 
-                <label>Date</label>
+                <label
+                  style={{
+                    fontSize: "15px",
+                    fontWeight: "600",
+                  }}
+                >
+                  Date
+                </label>
 
                 <input
                   type="date"
@@ -214,6 +249,7 @@ function ExpenseList({ expenses, fetchExpenses }) {
                     boxSizing: "border-box",
                     border: "1px solid #cbd5e1",
                     borderRadius: "7px",
+                    fontSize: "15px",
                   }}
                 />
 
@@ -227,6 +263,8 @@ function ExpenseList({ expenses, fetchExpenses }) {
                     borderRadius: "7px",
                     marginRight: "8px",
                     cursor: "pointer",
+                    fontSize: "15px",
+                    fontWeight: "600",
                   }}
                 >
                   Save
@@ -241,6 +279,8 @@ function ExpenseList({ expenses, fetchExpenses }) {
                     border: "none",
                     borderRadius: "7px",
                     cursor: "pointer",
+                    fontSize: "15px",
+                    fontWeight: "600",
                   }}
                 >
                   Cancel
@@ -260,7 +300,7 @@ function ExpenseList({ expenses, fetchExpenses }) {
                     style={{
                       margin: "0",
                       color: "#1e293b",
-                      fontSize: "22px",
+                      fontSize: "24px",
                     }}
                   >
                     ₹{expense.amount}
@@ -271,7 +311,7 @@ function ExpenseList({ expenses, fetchExpenses }) {
                       ...getCategoryStyle(expense.category),
                       padding: "5px 10px",
                       borderRadius: "20px",
-                      fontSize: "12px",
+                      fontSize: "13px",
                       fontWeight: "600",
                     }}
                   >
@@ -283,6 +323,7 @@ function ExpenseList({ expenses, fetchExpenses }) {
                   style={{
                     margin: "8px 0",
                     color: "#475569",
+                    fontSize: "15px",
                   }}
                 >
                   {expense.description || "No description"}
@@ -308,6 +349,8 @@ function ExpenseList({ expenses, fetchExpenses }) {
                     borderRadius: "7px",
                     marginRight: "8px",
                     cursor: "pointer",
+                    fontSize: "15px",
+                    fontWeight: "600",
                   }}
                 >
                   Edit
@@ -322,6 +365,8 @@ function ExpenseList({ expenses, fetchExpenses }) {
                     border: "none",
                     borderRadius: "7px",
                     cursor: "pointer",
+                    fontSize: "15px",
+                    fontWeight: "600",
                   }}
                 >
                   Delete

@@ -9,6 +9,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import MonthlyTotal from "./components/MonthlyTotal";
+import TopCategory from "./components/TopCategory";
+
+import "./App.css";
 
 function Dashboard() {
   const { logout } = useContext(AuthContext);
@@ -32,74 +35,73 @@ function Dashboard() {
     fetchExpenses();
   }, []);
 
-  return (
-    <div
-      style={{
-        minHeight: "100vh",
-        backgroundColor: "#f5f7fb",
-        padding: "40px 20px",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "900px",
-          margin: "0 auto",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "30px",
-          }}
-        >
-          <div>
-            <h1
-              style={{
-                margin: "0",
-                color: "#1e293b",
-                fontSize: "28px",
-              }}
-            >
-              Personal Expense Tracker
-            </h1>
+  const transactionCount = expenses.length;
 
-            <p
-              style={{
-                margin: "5px 0 0",
-                color: "#64748b",
-                fontSize: "14px",
-              }}
-            >
-              Track your spending with ease
-            </p>
+  return (
+    <div className="dashboard">
+      <div className="dashboard-container">
+
+        {/* Header */}
+        <header className="dashboard-header">
+          <div>
+            <h1>Personal Expense Tracker</h1>
+            <p>Track your spending with ease</p>
           </div>
 
           <button
+            className="logout-button"
             onClick={logout}
-            style={{
-              padding: "9px 16px",
-              backgroundColor: "#dc2626",
-              color: "white",
-              border: "none",
-              borderRadius: "8px",
-              cursor: "pointer",
-              fontSize: "14px",
-            }}
           >
             Logout
           </button>
-        </div>
+        </header>
 
-        <MonthlyTotal expenses={expenses} />
+        {/* Summary Cards */}
+        <section className="summary-grid">
 
-        <ExpenseForm fetchExpenses={fetchExpenses} />
+          {/* Monthly Total */}
+          <div className="summary-card">
+            <MonthlyTotal expenses={expenses} />
+          </div>
 
-        <ExpenseList
-          expenses={expenses}
-          fetchExpenses={fetchExpenses}
-        />
+          {/* Transactions */}
+          <div className="summary-card">
+            <span className="summary-title">
+              Transactions
+            </span>
+
+            <strong className="summary-value">
+              {transactionCount}
+            </strong>
+          </div>
+
+          {/* Top Category */}
+          <div className="summary-card">
+            <TopCategory expenses={expenses} />
+          </div>
+
+        </section>
+
+        {/* Main Content */}
+        <section className="dashboard-content">
+
+          {/* Add Expense */}
+          <div className="form-panel">
+            <ExpenseForm
+              fetchExpenses={fetchExpenses}
+            />
+          </div>
+
+          {/* Recent Expenses */}
+          <div className="list-panel">
+            <ExpenseList
+              expenses={expenses}
+              fetchExpenses={fetchExpenses}
+            />
+          </div>
+
+        </section>
+
       </div>
     </div>
   );
@@ -109,7 +111,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
+
+        <Route
+          path="/login"
+          element={<Login />}
+        />
 
         <Route
           path="/"
@@ -119,6 +125,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
       </Routes>
     </BrowserRouter>
   );

@@ -49,7 +49,9 @@ function ExpenseForm({ fetchExpenses }) {
         backgroundColor: "#ffffff",
         padding: "25px",
         borderRadius: "15px",
-        boxShadow: "0 4px 15px rgba(0, 0, 0, 0.08)",
+        border: "1px solid #bfdbfe",
+        borderTop: "4px solid #2563eb",
+        boxShadow: "0 4px 15px rgba(37, 99, 235, 0.10)",
         marginBottom: "25px",
       }}
     >
@@ -57,6 +59,7 @@ function ExpenseForm({ fetchExpenses }) {
         style={{
           marginTop: "0",
           color: "#1e293b",
+          fontSize: "22px",
         }}
       >
         Add Expense
@@ -86,7 +89,8 @@ function ExpenseForm({ fetchExpenses }) {
               display: "block",
               marginBottom: "6px",
               color: "#334155",
-              fontWeight: "500",
+              fontWeight: "600",
+              fontSize: "15px",
             }}
           >
             Amount
@@ -104,7 +108,7 @@ function ExpenseForm({ fetchExpenses }) {
               boxSizing: "border-box",
               border: "1px solid #cbd5e1",
               borderRadius: "8px",
-              fontSize: "14px",
+              fontSize: "15px",
             }}
           />
         </div>
@@ -115,7 +119,8 @@ function ExpenseForm({ fetchExpenses }) {
               display: "block",
               marginBottom: "6px",
               color: "#334155",
-              fontWeight: "500",
+              fontWeight: "600",
+              fontSize: "15px",
             }}
           >
             Category
@@ -129,7 +134,7 @@ function ExpenseForm({ fetchExpenses }) {
               padding: "11px",
               border: "1px solid #cbd5e1",
               borderRadius: "8px",
-              fontSize: "14px",
+              fontSize: "15px",
               backgroundColor: "white",
             }}
           >
@@ -148,7 +153,8 @@ function ExpenseForm({ fetchExpenses }) {
               display: "block",
               marginBottom: "6px",
               color: "#334155",
-              fontWeight: "500",
+              fontWeight: "600",
+              fontSize: "15px",
             }}
           >
             Description
@@ -165,7 +171,7 @@ function ExpenseForm({ fetchExpenses }) {
               boxSizing: "border-box",
               border: "1px solid #cbd5e1",
               borderRadius: "8px",
-              fontSize: "14px",
+              fontSize: "15px",
             }}
           />
         </div>
@@ -176,7 +182,8 @@ function ExpenseForm({ fetchExpenses }) {
               display: "block",
               marginBottom: "6px",
               color: "#334155",
-              fontWeight: "500",
+              fontWeight: "600",
+              fontSize: "15px",
             }}
           >
             Date
@@ -193,7 +200,7 @@ function ExpenseForm({ fetchExpenses }) {
               boxSizing: "border-box",
               border: "1px solid #cbd5e1",
               borderRadius: "8px",
-              fontSize: "14px",
+              fontSize: "15px",
             }}
           />
         </div>
@@ -203,11 +210,11 @@ function ExpenseForm({ fetchExpenses }) {
           style={{
             width: "100%",
             padding: "12px",
-            backgroundColor: "#2563eb",
+            backgroundColor: "#1e40af",
             color: "white",
             border: "none",
-            borderRadius: "8px",
-            fontSize: "15px",
+            borderRadius: "10px",
+            fontSize: "16px",
             fontWeight: "600",
             cursor: "pointer",
           }}
