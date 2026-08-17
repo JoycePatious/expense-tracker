@@ -1,4 +1,3 @@
-
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -52,11 +51,11 @@ function Login() {
             textAlign: "center",
             color: "#1e3a8a",
             margin: "0 0 8px",
-            fontSize: "28px",
+            fontSize: "34px",
             fontWeight: "700",
           }}
         >
-          Welcome Back
+          TracMee
         </h1>
 
         <p
@@ -67,7 +66,7 @@ function Login() {
             fontSize: "14px",
           }}
         >
-          Login to your Expense Tracker
+          Login to your expense tracker
         </p>
 
         <form onSubmit={handleSubmit}>
